@@ -1,11 +1,10 @@
 <?php
 try {
     require_once __DIR__ . '/../config/bootstrap.php';
-    require_once __DIR__ . '/../scripts/google-sheet-match.php';
+    //require_once __DIR__ . '/../scripts/google-sheet-match.php';
     require_once __DIR__ . '/../scripts/local-file-match.php';  // <-- include your local match script
 
     $userId = $_SESSION['user']['id'] ?? null;
-    error_log("[SetupProfile] Start processing for user ID: " . var_export($userId, true));
 
     $first = trim($_POST['first_name'] ?? '');
     $last = trim($_POST['last_name'] ?? '');
@@ -15,9 +14,9 @@ try {
     $wantsEmails = isset($_POST['wants_emails']) ? 1 : 0;
     $phoneNumber = trim($_POST['phone_number'] ?? '');
 
-    error_log("[SetupProfile] Received input - First: $first, Last: $last, Preferred: $preferred, RideGroup: $rideGroup, WantsTexts: $wantsTexts, WantsEmails: $wantsEmails, Phone: $phoneNumber");
 
-    if (!$userId || !$first || !$last || !$rideGroup) {
+
+    if (!$userId || !$first || !$last) {
         $msg = "Missing required fields or session user ID.";
         error_log("[SetupProfile][Error] $msg Input: " . json_encode($_POST));
         $_SESSION['error'] = 'Missing required fields.';
@@ -92,7 +91,7 @@ try {
         WHERE id = ?
     ");
 
-    if (!$stmt->execute([$first, $last, $preferred ?: null, $phoneNumber, $rideGroup, $wantsTexts, $wantsEmails, $userId])) {
+    if (!$stmt->execute([$first, $last, $preferred ?: null, $phoneNumber, 1, $wantsTexts, $wantsEmails, $userId])) {
         $errorInfo = $stmt->errorInfo();
         error_log("[SetupProfile][Error] Failed to update profile for user ID $userId: " . print_r($errorInfo, true));
         die("DB update error: " . htmlspecialchars($errorInfo[2]));

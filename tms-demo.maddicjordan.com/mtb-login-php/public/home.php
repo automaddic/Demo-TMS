@@ -116,9 +116,13 @@ $practices = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     Receive Text Updates
                                 </label>
 
-                                <input type="tel" name="phone-number" id="phone_number"
-                                   value="<?= htmlspecialchars($prefill['phone_number'] ?? '') ?>"
-                                      <?= !empty($prefill['wants_texts']) ? 'required' : '' ?>>
+                                <div id="phone-wrapper">
+                                    <label for="phone_number">Phone Number</label>
+                                    <input type="tel" name="phone_number" id="phone_number"
+                                        value="<?= htmlspecialchars($prefill['phone_number'] ?? '') ?>"
+                                        <?= !empty($prefill['wants_texts']) ? 'required' : '' ?>>
+                                </div>
+
 
                                 <label>
                                     <input type="checkbox" name="wants_emails" <?= !empty($prefill['wants_emails']) ? 'checked' : '' ?>>
@@ -127,17 +131,28 @@ $practices = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             </div>
 
                             <script>
-                              const wantsTexts = document.getElementById('wants_texts');
-                              const phone = document.getElementById('phone_number');
-                          
-                              // Set required on page load based on checkbox state
-                              phone.required = wantsTexts.checked;
-                          
-                              // Update required whenever checkbox changes
-                              wantsTexts.addEventListener('change', function () {
-                                  phone.required = this.checked;
-                              });
-                          </script>
+                                const wantsTexts = document.getElementById('wants_texts');
+                                const phoneWrapper = document.getElementById('phone-wrapper');
+                                const phoneInput = document.getElementById('phone_number');
+
+                                // Function to update visibility and required state
+                                function updatePhoneVisibility() {
+                                    if (wantsTexts.checked) {
+                                        phoneWrapper.style.display = 'block';
+                                        phoneInput.required = true;
+                                    } else {
+                                        phoneWrapper.style.display = 'none';
+                                        phoneInput.required = false;
+                                    }
+                                }
+
+                                // Run on page load
+                                updatePhoneVisibility();
+
+                                // Run whenever checkbox changes
+                                wantsTexts.addEventListener('change', updatePhoneVisibility);
+                            </script>
+
 
 
                             <input type="hidden" name="force_save" id="force_save" value="0">
