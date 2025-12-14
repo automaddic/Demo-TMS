@@ -1,0 +1,802 @@
+/* General Page Styling */
+body {
+  font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+  background-color: #2C2A2A;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+h1,
+h2 {
+  color: #ffffff;
+  font-weight: 200;
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+
+.container {
+  position: relative;
+  margin: 20px auto;
+  background-color: #3D3939;
+  padding: 5px 30px 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+  height: 100%;
+
+}
+
+
+.page-wrapper {
+  margin-left: 70px;
+  padding: 0 2rem 2rem;
+  flex: 1;
+  max-height: 100%;
+}
+
+.header-wrapper {
+
+  position: relative;
+  justify-content: center;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+
+}
+
+/* Push header down to halfway between top and container */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 100%;
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+
+.welcome-wrapper {
+  display: flex;
+  flex-direction: column;
+  font-size: 36px;
+  font-weight: 300;
+  color: white;
+  line-height: 1.2;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  /* allow height to expand naturally */
+  position: relative;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* You can tweak font size or color */
+#welcome {
+  font-size: 46px;
+  font-weight: 300;
+  color: white;
+  margin: 0;
+}
+
+
+#welcome span {
+  font-size: 42px;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.header-logo {
+  width: 80px;
+  height: auto;
+}
+
+/* Links */
+a {
+  color: #499ED8;
+  text-decoration: none;
+  font-weight: lighter;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* WEATHER SECTION */
+#weather-section {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin-top: 30px;
+  background-color: #544E4E;
+  border-radius: 10px;
+  padding: 15px 20px;
+  color: white;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+  width: 400px;
+}
+
+#weather-section h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  font-weight: normal;
+  color: #E1E1E1;
+}
+
+#weather-section img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+#weather-section p {
+  margin: 6px 0;
+  font-size: 16px;
+}
+
+#weather-section span {
+  font-weight: bold;
+  color: #D1D1D1;
+}
+
+/* Mini modal container */
+.mini-modal {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Mini modal content box */
+.mini-modal-content {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.attendance-container {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 45px;
+  margin-bottom: auto;
+  background-color: #4B4747;
+  padding-top: 1px;
+  padding-bottom: 10px;
+  width: 550px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Title */
+.title-cont-attend p {
+  font-size: 32px;
+  font-weight: 100;
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* Attendance buttons */
+.attendance-options button {
+  margin: 5px;
+  padding: 10px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  background-color: #499ED8;
+  transition: background-color 0.3s ease;
+}
+
+.attendance-options button:hover {
+  background-color: #367ab8;
+}
+
+.attendance-options button.selected {
+  background-color: #2c7bbf;
+}
+
+/* Practice day selector */
+.practice-day-select {
+  margin-bottom: 20px;
+  font-size: 18px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #499ED8;
+  background-color: #2C2A2A;
+  color: white;
+}
+
+/* Info text */
+.info-text {
+  color: #ddd;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.ride-group-badge {
+  position: relative;
+  width: 100px;
+  height: 60px;
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ride-group-badge img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.badge-text {
+  position: absolute;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  transform: rotate(-20deg);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+}
+
+.day-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.day-modal-content {
+  background: #2C2A2A;
+  padding: 30px;
+  border-radius: 10px;
+  color: white;
+  width: 450px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.day-modal-content input,
+.day-modal-content select {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #444;
+  color: white;
+  box-sizing: border-box;
+  /* ensures padding doesn't overflow */
+}
+
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  color: white;
+}
+
+.checkbox-group input[type="checkbox"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #499ED8;
+  border-radius: 4px;
+  background-color: #2C2A2A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"]:checked {
+  background-color: #499ED8;
+}
+
+.checkbox-group input[type="checkbox"]::after {
+  content: "";
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  display: none;
+}
+
+.checkbox-group input[type="checkbox"]:checked::after {
+  display: block;
+}
+
+
+.day-modal-content button {
+  margin-top: 15px;
+  padding: 10px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  background-color: #499ED8;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.day-modal-content button:hover {
+  background-color: #367ab8;
+}
+
+
+.blurred-review .page-wrapper {
+  filter: blur(5px);
+  pointer-events: none;
+}
+
+.review-message {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2C2A2A;
+  color: #fff;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  z-index: 3000;
+  font-size: 18px;
+}
+
+/* Blur all elements except the modal */
+.blurred-review>*:not(#suspend-warning):not(.review-message) {
+  filter: blur(6px);
+  pointer-events: none;
+  user-select: none;
+  transition: filter 0.3s ease;
+}
+
+/* Optional: style for the "under review" message */
+.review-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffc107;
+  color: #333;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  z-index: 9999;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* Applies blur to everything in content-wrapper */
+.blurred {
+  filter: blur(5px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.day-modal-overlay,
+.review-message {
+  z-index: 3000;
+  /* or higher */
+}
+
+.practices-container {
+
+  background-color: #544E4E;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 15px;
+
+}
+
+/* Container for horizontal scrolling */
+.practices-scroll {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+
+}
+
+/* Practice panel: make it larger */
+.practice-panel {
+
+  position: relative;
+  background-color: #3D3939;
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 1.5rem;
+  /* larger min width */
+  max-width: 275px;
+  width: 100%;
+  /* control maximum width */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  /* don’t shrink below min-width */
+  /* optionally add a bit of height: */
+  /* min-height: 300px;  if you want consistent height */
+}
+
+/* Highlight “today” panel if you use a class */
+.practice-panel.today {
+  border-color: #28a745;
+  box-shadow: 0 0 8px rgba(40, 167, 69, 0.5);
+}
+
+/* Title */
+.practice-panel h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.25rem;
+  /* slightly larger */
+  font-weight: 600;
+  word-break: break-word;
+}
+
+/* Datetime */
+.practice-panel .datetime {
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  color: #ddd;
+  word-break: break-word;
+}
+
+/* Location */
+.practice-panel .location {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  color: #ccc;
+  word-break: break-word;
+}
+
+/* Footer grouping: Directions + Enlarge */
+.practice-panel .panel-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* Directions link */
+.practice-panel .btn-directions {
+  background-color: #499ED8;
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 10px;
+  /* slightly bigger */
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.practice-panel .btn-directions:hover {
+  background-color: #367ab8;
+}
+
+/* Enlarge button */
+.practice-panel .btn-enlarge {
+  position: absolute;
+  top: 8px;
+  /* adjust as desired */
+  right: 8px;
+  /* adjust as desired */
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+
+  /* slightly larger icon */
+  cursor: pointer;
+  color: #fff;
+  transition: transform 0.2s ease;
+}
+
+.practice-panel .btn-enlarge img {
+
+  width: 20px;
+  height: auto;
+
+}
+
+.practice-panel .btn-enlarge:hover {
+  transform: scale(1.1);
+}
+
+/* Attendance buttons: stack vertically, full width */
+.practice-panel .attendance-buttons {
+  display: flex;
+  flex-direction: column;
+  /* stack vertically */
+  gap: 0.5rem;
+  /* spacing between buttons */
+  margin-top: auto;
+  /* push to bottom of panel */
+}
+
+/* Each attendance button spans full width */
+.practice-panel .attendance-buttons button {
+  width: 100%;
+  background-color: #6C6666;
+  color: #fff;
+  border: solid;
+  border-width: 2px;
+  border-color: #6C6666;
+  border-radius: 4px;
+  padding: 8px;
+  /* increased padding for better touch */
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  box-sizing: border-box;
+}
+
+.practice-panel .attendance-buttons button.attend-yes {
+  background-color: rgba(26, 108, 45, 0.8);
+}
+
+.practice-panel .attendance-buttons button.attend-maybe {
+  background-color: rgba(197, 149, 5, 0.8);
+}
+
+.practice-panel .attendance-buttons button.attend-no {
+  background-color: rgb(111, 30, 39);
+}
+
+.practice-panel .attendance-buttons button.attend-yes:hover {
+  background-color: rgba(40, 167, 69, 0.8);
+}
+
+.practice-panel .attendance-buttons button.attend-maybe:hover {
+  background-color: rgba(255, 193, 7, 0.8);
+  color: #2C2A2A;
+}
+
+.practice-panel .attendance-buttons button.attend-no:hover {
+  background-color: rgba(220, 53, 69, 0.8);
+}
+
+/* Disabled styling: if JS disables after window */
+.practice-panel .attendance-buttons button:disabled {
+  background-color: #444;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.practice-panel.recently-ended {
+  border: 2px solid #f1c40f; /* yellow border */
+  opacity: 0.95;
+}
+
+
+/* Scrollbar styling (optional) */
+.practices-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.practices-scroll::-webkit-scrollbar-track {
+  background: #2C2A2A;
+}
+
+.practices-scroll::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+
+/* Close button */
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Weather & notes styling */
+#enlarge-weather,
+#enlarge-notes {
+  margin-top: 1rem;
+}
+
+#weather-content p,
+#notes-content p {
+  margin: 0.5rem 0;
+}
+
+.modal-content-attend {
+  position: relative;
+  background: #2C2A2A;
+  padding: 30px;
+  border-radius: 10px;
+  color: white;
+  width: 450px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content-attend input,
+.modal-content-attend select {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #444;
+  color: white;
+  box-sizing: border-box;
+  /* ensures padding doesn't overflow */
+}
+
+.practice-panel.ongoing {
+  border: 2px solid #4caf50;
+}
+
+@media (max-width: 768px) {
+
+  body {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    height: auto;
+  }
+
+  .header-wrapper{
+
+    margin-left: 40px;
+    margin-right: 10px;
+
+  }
+
+  .page-wrapper {
+    margin-left: 0;
+    padding: 0 1rem 1rem 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 100%;
+  }
+
+  body.modal-open {
+  overflow: hidden;
+  height: 100vh;
+  position: fixed;
+  width: 100%;
+}
+
+
+  .header-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  .welcome-wrapper {
+    font-size: 28px;
+  }
+
+  .header-logo {
+    width: 60px;
+    margin-bottom: 10px;
+  }
+
+  #welcome {
+    font-size: 32px;
+  }
+
+  #welcome span {
+    font-size: 32px;
+  }
+
+  .container,
+  .attendance-container,
+  #weather-section,
+  .day-modal-content,
+  .modal-content-attend {
+    width: 95%;
+    margin: 10px auto;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .practice-day-select {
+    width: 100%;
+  }
+
+  .practices-scroll {
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: unset;
+    padding: 0;
+    gap: 1rem;
+  }
+
+  .practice-panel {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+
+  .day-modal-content button,
+  .modal-content-attend button {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .attendance-options button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .checkbox-group label {
+    font-size: 14px;
+  }
+
+  .ride-group-badge {
+    width: 80px;
+    height: 50px;
+    margin: 10px;
+  }
+
+  .review-message {
+    width: 90%;
+    font-size: 16px;
+    padding: 15px;
+  }
+
+}
+

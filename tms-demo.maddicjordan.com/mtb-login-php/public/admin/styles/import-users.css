@@ -1,0 +1,141 @@
+/* === Base Styles === */
+body {
+  background-color: #2C2A2A;
+  color: #fff;
+  font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", DejaVu Sans Condensed, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 2rem;
+}
+
+/* === Container === */
+.container {
+  max-width: 100vw;
+  background: #3D3939;
+  margin-left: 70px;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+/* === Headings === */
+h2 {
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+/* === Form and Select === */
+form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+select {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #555;
+  background: #2C2A2A;
+  color: #fff;
+  width: 100%;
+  height: 20px;
+  max-width: 300px;
+}
+
+select:focus {
+  outline: none;
+  border-color: #499ED8;
+}
+
+/* === Buttons === */
+.btn {
+  padding: 10px 16px;
+  background-color: #499ED8;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.btn:hover {
+  background-color: #367ab8;
+}
+
+.btn-menu {
+    display: flex;              /* arrange children in a row */
+    justify-content: space-between; /* space the two divs apart */
+    align-items: center;        /* vertically center the buttons and span */
+    margin: 1em 0;              /* optional spacing around the menu */
+    width: 100%;
+}
+
+.btn-menu > div {
+    display: flex;              /* keep buttons inside each div in a row */
+    gap: 0.5em;                 /* space between buttons within each group */
+}
+
+/* === Table Styles === */
+table {
+  width: 100%;
+  margin-top: 1.5rem;
+  border-collapse: collapse;
+  background-color: #2C2A2A;
+  border: 1px solid #555;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #555;
+  color: #fff;
+}
+
+thead th {
+  background-color: #4B4848;
+}
+
+tbody tr:hover {
+  background-color: #504F4F;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.2);
+}
+
+
+.mobile-modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.2);
+  /* darkens */
+  backdrop-filter: blur(8px);
+  /* blurs */
+  -webkit-backdrop-filter: blur(8px);
+  /* Safari support */
+  color: white;
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.mobile-modal-content {
+  margin: 1rem;
+  background: #3D3939;
+  padding: 2rem;
+  border-radius: 12px;
+
+  max-width: 90%;
+  width: 100%;
+}
+
+/* Show modal and hide page content on small screens */
+@media (max-width: 768px) {
+  .mobile-modal-overlay {
+    display: flex;
+  }
+}

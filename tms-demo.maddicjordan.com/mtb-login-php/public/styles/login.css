@@ -1,0 +1,287 @@
+/* CSS page for the login screen */
+
+body {
+	
+	background-color: #3D3939;
+	
+}
+
+.Log-in {
+	
+	position: relative;
+	
+	background: none;
+	
+	width: 450px;
+	height: 575px;
+	
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 45px;
+	margin-bottom: auto;
+	
+}
+
+.Log-in div{
+	
+	background-color: #2C2A2A;
+	
+	width: auto;
+	height: auto;
+	z-index: 1;	
+	
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	
+	border-radius: 8px;
+	
+}
+
+.Log-in div div {
+	
+	width: 100%;
+	
+}
+
+.img-cont img{
+	
+	display: block;
+	
+	width: 70px;
+	height: 70px;
+	
+	z-index: 1;
+	
+	margin-top: 15px;
+	margin-bottom: 25px;
+	
+}
+
+.title-cont p {
+	
+	text-align: center;
+	margin: 0;
+	margin-bottom: 10px;
+	
+	color: white;
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif" ;
+	font-size: 32px;
+	font-weight: 100;
+	
+}
+
+#split-1 {
+	
+	width: 90%;
+	margin-bottom: 20px;
+}
+
+form {
+	
+	width: 100%;
+	
+}
+
+#manual-login {
+	
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	
+}
+
+#manual-login div{
+	
+	align-items: flex-start;
+	width: 80%;	
+}
+
+#manual-login div label {
+	
+	color: white;
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+	font-size: 15px;
+	margin-bottom: 5px;
+
+}
+
+#email-in {
+	
+	width: 100%;
+	height: 40px;
+	border-radius: 6px;
+	border: 3px solid white;
+	background-color: #BEBBBB;
+	padding: 5px;
+	margin-bottom: 15px;
+	box-sizing: border-box;
+	
+}
+
+#pass-in {
+	
+	width: 100%;
+	height: 40px;
+	border-radius: 6px;
+	border: 3px solid white;
+	background-color: #BEBBBB;
+	padding: 5px;
+	margin-bottom: 15px;
+	box-sizing: border-box;
+	
+}
+
+
+#split-2 {
+	
+	margin-top: 25px;
+	flex-direction: row;
+	height: 5px;
+	margin-bottom: 20px;
+}
+
+#split-2 p{
+	
+	color: white;
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+	font-size: 13px;
+	
+}
+
+#split-2-1{
+	
+	width: 40%;
+	
+	
+}
+
+#split-2-2{
+	
+	width: 40%;
+	
+	
+}
+
+#LoginPOST {
+	
+	background: #403D3D;
+    color: white;
+    border: solid;
+	border-width: 2px;
+    padding: 10px;
+    width: 70%;
+    margin-top: 20px;
+	margin-bottom: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+	
+}
+
+#LoginPOST:hover {
+	
+	background-color: #99AD9F;
+	color: white;
+}
+
+#auto-logins {
+	
+	width: 100%;
+	height: 100px;
+	
+	
+}
+
+#GOOGLE-AUTH {
+	
+	background: #403D3D;
+    color: white;
+    border: solid;
+	border-width: 2px;
+    padding: 10px;
+    width: 70%;
+	margin-bottom: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+	
+}
+
+#GOOGLE-AUTH:hover {
+	
+	box-shadow: 0 0 10px 10px rgba(36,114,202,0.24);
+	
+}
+
+a {
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif" ;
+    color: #499ED8;
+    text-decoration: none;
+    font-weight: lighter;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.error {
+    color: #ff4d4d !important;
+    font-size: 14px;
+    text-align: center;
+    font-family: "Gill Sans", "Gill Sans MT", sans-serif;
+    margin-bottom: 10px;
+}
+
+/* Mobile Responsive Enhancements */
+@media (max-width: 600px) {
+    body {
+        padding-top: 30px;
+        height: auto;
+		padding-bottom: 100px;
+    }
+
+    .Log-in {
+        width: 90%;
+        height: auto;
+        margin-top: 20px;
+    }
+
+    .img-cont img {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 20px;
+    }
+
+    .title-cont p {
+        font-size: 24px;
+    }
+
+    #manual-login div {
+        width: 90%;
+    }
+
+    #email-in,
+    #pass-in {
+        font-size: 15px;
+    }
+
+    #LoginPOST,
+    #GOOGLE-AUTH {
+        width: 90%;
+        font-size: 15px;
+        padding: 12px;
+    }
+
+    #split-2 p {
+        font-size: 12px;
+    }
+
+    #auto-logins {
+        height: auto;
+    }
+}

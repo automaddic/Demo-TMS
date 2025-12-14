@@ -1,0 +1,967 @@
+/* === Base Styles === */
+body {
+  background-color: #2C2A2A;
+  font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+  color: #fff;
+
+
+}
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;   
+  overflow-y: hidden; /* still hide horizontal overflow */
+
+  box-sizing: border-box;
+}
+
+.page-wrapper {
+  margin-left: 70px;
+  padding: 2rem;
+  padding-bottom: 50px;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.page-wrapper {
+  max-height: 100vh;  /* viewport height */
+  overflow-y: auto;   /* scrollable */
+  overflow-x: hidden;
+}
+
+
+/* === Typography === */
+h1,
+h2 {
+  color: #ffffff;
+  font-weight: 200;
+  margin-bottom: 20px;
+}
+
+/* === Containers / Utility === */
+.container {
+  position: relative;
+  margin: 20px auto;
+  background-color: #3D3939;
+  padding: 5px 30px 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+/* === Controls: Search & Sort & Reset === */
+#controls {
+  display: flex;
+  position: sticky;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  top: 0px;
+  padding-top: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: #2C2A2A;
+  z-index: 500;
+  border-bottom: 2px solid white;
+}
+
+#search-bar {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #555;
+  background-color: #2C2A2A;
+  color: #fff;
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.6);
+  transition: border-color 0.3s ease;
+  flex-grow: 1;
+  max-width: 400px;
+}
+
+#search-clear {
+
+    width: 30px;
+    height: 30px;
+    border: 1px solid #555;
+  background-color: #4d4747;
+  color: white;
+  font-size: 1rem;
+  border-radius: 6px;
+
+}
+.search-wrapper {
+    display: inline-flex;        /* place input and button in a row */
+    align-items: center;         /* vertically center them */
+    gap: 10px;         
+    width: 100%; 
+    max-width: 85%;        /* 20px space between input and button */
+}
+
+#search-bar::placeholder {
+  color: #999;
+}
+
+#search-bar:focus {
+  border-color: #499ED8;
+  outline: none;
+  box-shadow: 0 0 5px #499ED8;
+}
+.end-btn {
+  background-color: #488d28;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  font-size: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 12px;
+  transition: background-color 0.2s ease;
+}
+
+.sort-btn {
+  background-color: #6C6666;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin-left: 8px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease, transform 0.15s ease;
+  user-select: none;
+}
+
+.sort-btn:hover {
+  background-color: #91aaff;
+  color: #2C2A2A;
+  transform: scale(1.05);
+}
+
+.sort-btn.active {
+  background-color: #499ED8;
+  color: white;
+  box-shadow: 0 0 8px #499ED8;
+}
+
+.sort-btn:focus {
+  outline: none;
+  box-shadow: 0 0 10px #91aaff;
+}
+
+.reset-btn {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  font-size: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 12px;
+  transition: background-color 0.2s ease;
+}
+
+.reset-btn:hover {
+  background-color: #c9302c;
+}
+
+/* === Table Styles === */
+.table-container {
+  position: relative;
+  overflow-x: auto;
+  /* for spinner overlay */
+}
+
+#checkin-table,
+#approval-table {
+  width: 100%;
+
+  color: #fff;
+  font-size: 0.95rem;
+  user-select: none;
+}
+
+table {
+  width: 100%;
+  max-width: 100%;
+  table-layout: fixed;
+}
+
+.manual-checkin-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ffeb3b;
+  color: #333;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 0 10px #ffeb3b;
+  z-index: 1001;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* ✅ Override for small/mobile screens */
+@media (max-width: 768px) {
+  .manual-checkin-btn {
+    bottom: 20px;
+    right: 10px;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    font-size: 0;
+  }
+
+  .manual-checkin-btn::before {
+    font-size: 18px;
+    content: "+";
+    display: block;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+    line-height: 20px;
+  }
+
+  .manual-checkin-btn span {
+    display: none;
+  }
+}
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#user-info-modal.modal-overlay {
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+#user-info-modal .modal-content {
+  margin: 0; /* remove any default margin */
+}
+
+
+
+.user-info-btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important; /* left-align text */
+  width: 100%;
+  height: 100%;
+  padding: 4px 6px;
+  background: none;
+  border: none;
+  color: white;
+  font: inherit;
+  line-height: 1.1;
+  text-align: left;
+  white-space: normal !important; /* normal wrapping */
+  word-break: break-word;
+}
+
+
+.modal-content {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  max-width: 90%;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.modal-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-content input,
+.modal-content select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0 12px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.modal-content button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-content button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.autocomplete-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #444;
+  border-top: none;
+  max-height: 150px;
+  overflow-y: auto;
+  background-color: #1e1e1e; /* dark background */
+  position: absolute;
+  width: 100%;
+  z-index: 10001;
+  color: #f0f0f0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  font-size: 0.9rem;
+}
+
+.autocomplete-list li {
+  padding: 8px 12px;
+  border-bottom: 1px solid #333;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.autocomplete-list li:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+
+#checkin-table th,
+#checkin-table td,
+#approval-table th,
+#approval-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #555;
+  text-align: left;
+}
+
+#checkin-table th,
+#approval-table th {
+  background-color: #4B4848;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#checkin-table th:hover,
+#approval-table th:hover {
+  background-color: #6C6666;
+}
+
+#checkin-table tr:hover,
+#approval-table tr:hover {
+  background-color: #504F4F;
+}
+
+/* === Buttons (Check-In/Check-Out/Edit/Approve/Reject) === */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.toast {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 100%); /* hidden off-screen */
+  background-color: #665c00; /* dark yellow */
+  color: #fffbe6;
+  border: 2px solid #ffeb3b; /* neon yellow border */
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  z-index: 9999;
+  box-shadow: 0 0 10px #ffeb3b;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+  cursor: pointer;
+  max-width: 80vw;      /* Don't exceed 90% of viewport width */
+  width: max-content;   /* Fit content until max-width is hit */
+  text-align: center;   /* Optional: center text inside */
+  word-wrap: break-word; /* Allow wrapping if needed */
+}
+
+
+.toast.show {
+  transform: translate(-50%, -20px); /* slide in */
+  opacity: 1;
+}
+
+
+
+
+button.approve-time {
+  background-color: #28a745;
+  /* green */
+  border: none;
+  padding: 6px 12px;
+  color: white;
+  font-weight: 600;
+  border-radius: 6px;
+  margin-right: 4px;
+}
+
+button.approve-time:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+button.reject-time {
+  background-color: #dc3545;
+  /* red */
+  border: none;
+  padding: 6px 12px;
+  color: white;
+  font-weight: 600;
+  border-radius: 6px;
+  margin-right: 4px;
+}
+
+button.reject-time:hover:not(:disabled) {
+  background-color: #c82333;
+}
+
+button.edit-time {
+  background-color: #ffc107;
+  /* yellow */
+  border: none;
+  padding: 6px 12px;
+  color: #2C2A2A;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+button.edit-time:hover:not(:disabled) {
+  background-color: #e0a800;
+}
+
+/* === Overlay when no practice === */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 50;
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: flex-start;
+  /* changed from center */
+  align-items: center;
+  padding-left: 70px;
+  /* matches sidebar width */
+  padding-right: 0;
+  /* optional for spacing */
+}
+
+.no-practice-modal {
+  margin: 0 auto;
+  /* centers inside flex container */
+  background-color: #3D3939;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.5);
+  color: white;
+  max-width: 600px;
+  width: 100%;
+}
+
+.no-practice-modal h2 {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.no-practice-modal p {
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+/* === Alerts / Labels === */
+.alert {
+  padding: 12px 16px;
+  margin: 12px 0 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 16px;
+  display: inline-block;
+}
+
+.alert.error {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+/* === Highlighting rows based on status === */
+/* Adjusted for dark theme using translucent backgrounds */
+.status-not-checked-out {
+  background-color: rgba(255, 193, 7, 0.2);
+  /* translucent yellow */
+  color: #fff;
+}
+
+.status-over-limit {
+  background-color: rgba(220, 53, 69, 0.2);
+  /* translucent red */
+  color: #fff;
+}
+
+.status-ok {
+  background-color: rgba(40, 167, 69, 0.2);
+  /* translucent green */
+  color: #fff;
+}
+
+/* === Day-Type Badge === */
+.day-type-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background-color: #524E6E;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+/* === Spinner overlays === */
+#loading-spinner,
+#loading-spinner-approval {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 1.2rem;
+  z-index: 100;
+}
+
+#loading-spinner.hidden,
+#loading-spinner-approval.hidden {
+  display: none;
+}
+
+/* === Modals for confirm & edit-time === */
+.time-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1100;
+}
+
+.time-modal.hidden {
+  display: none;
+}
+
+.time-modal-content {
+  background: #3D3939;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  color: #fff;
+  max-width: 90%;
+}
+
+.time-modal-content input[type="text"],
+.time-modal-content input[type="number"] {
+  width: 80px;
+  padding: 6px;
+  margin: 0 4px;
+}
+
+.time-modal-content button {
+  margin: 8px 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+/* ——— Fully mobile‑friendly overrides ——— */
+@media (max-width: 768px) {
+
+  /* 1) Full‑width content, no sidebar offset */
+  .page-wrapper {
+    margin-left: 0 !important;
+    padding: 0 1rem 1rem 1rem !important;
+  }
+
+  h1 {
+
+    margin-top: 1rem !important;
+
+  }
+
+  #search-bar {
+    width: 100px;
+    
+    font-size: 0.9rem;
+    padding: 8px;
+    margin-bottom: 0;
+  }
+
+  #sort-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .sort-btn {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    margin-left: 0;
+  }
+
+  .reset-btn {
+    position: fixed;
+    bottom: 50px;
+    right: 10px;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    font-size: 0;
+    z-index: 1000;
+  }
+  
+  .end-btn {
+    position: fixed;
+    bottom: 90px;
+    right: 10px;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    font-size: 0;
+    z-index: 1000;
+  }
+  .end-btn::before {
+    font-size: 14px;
+    content: "⚠";
+    display: block;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    line-height: 20px;
+  }
+
+  .reset-btn::before {
+    font-size: 18px;
+    content: "⟳";
+    display: block;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    line-height: 20px;
+  }
+
+  /* 3) Make tables scroll horizontally rather than wrap */
+
+
+  table {
+    display: block;
+    width: auto;
+    table-layout: fixed;
+
+    /* or whatever your full table width is */
+  }
+
+
+  /* 4) Shrink typography & paddings */
+  h1,
+  h2 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+}
+
+.col-school,
+  .col-team,
+  .col-status,
+  .col-ride_group,
+  .col-elapsed,
+  .col-confirmed {
+    display: none !important;
+  }
+
+  /* Always show these columns */
+  .col-first_name,
+  .col-checkin,
+  .col-checkout,
+  .col-reset {
+    display: table-cell !important;
+  }
+
+  .show-col-status .col-status {
+    display: table-cell !important;
+  }
+
+
+/* Row coloring — leave as is */
+#checkin-table tbody tr.status-not-checked-out {
+  background-color: rgba(255, 193, 7, 0.2) !important;
+}
+
+#checkin-table tbody tr.status-ok {
+  background-color: rgba(40, 167, 69, 0.2) !important;
+}
+
+
+
+/* ——— STOP mobile overflow once and for all ——— */
+@media (max-width: 768px) {
+
+  /* 1) Ensure html/body never overflow */
+  html,
+  body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    max-height: 100vh;
+    overflow-y: hidden;
+  }
+
+  /* 2) Container never scrolls sideways */
+  .table-container {
+    overflow-x: hidden !important;
+    box-sizing: border-box;
+    width: 100%;
+    /* optional side padding */
+  }
+
+  /* 3) Keep the table layout standard so it can wrap cells */
+  #checkin-table,
+  #approval-table {
+    display: table;
+    table-layout: auto !important;
+    width: 100% !important;
+  }
+
+  /* 4) Allow cells to wrap their content */
+  #checkin-table th,
+  #checkin-table td,
+  #approval-table th,
+  #approval-table td {
+    white-space: nowrap;
+    word-break: break-word !important;
+    padding: 10px 5px 10px 5px
+  }
+
+
+  #checkin-table tr,
+  #approval-table tr {
+    background: #3D3939;
+    border-radius: 8px;
+    width: 100%;
+  }
+
+  #checkin-table td,
+  #approval-table td {
+    white-space: pre-wrap;
+    /* Allows wrapping and respects spaces/newlines */
+    vertical-align: top;
+    box-sizing: border-box;
+    margin-bottom: 8px;
+  }
+
+  #checkin-table td::before,
+  #approval-table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #bbb;
+  }
+
+  #checkin-table td>*,
+  #approval-table td>* {
+    flex: 1 1 60%;
+  }
+
+  /* 6) Buttons wrap under their label */
+  .check-btn,
+  .edit-time,
+  .approve-time,
+  .reject-time {
+    width: auto !important;
+    margin: 6px 0 0 0;
+  }
+}
+
+.check-in, .check-out, .reset-user {
+  /* Fixed size */
+  min-width: 50px;
+  max-width: 100px;
+  height: 40px;
+
+  font-size: 16px;
+  border: 1px solid #333;
+  color: #333;
+  cursor: pointer;
+
+
+  /* Optional: align text center */
+  text-align: center;
+  display: inline-block;
+  box-sizing: border-box;
+
+  /* Slight rounding */
+  border-radius: 4px;
+}
+
+/* On smaller screens, you can override if needed */
+@media (max-width: 480px) {
+  .check-in, .check-out, .reset-user {
+    min-width: 30px;
+    max-width: 80px;
+    height: 36px;
+    font-size: 14px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .check-in::before {
+    content: "In";
+    font-size: 15px !important;
+  }
+
+  .check-out::before {
+    content: "Out";
+    font-size: 15px !important;
+  }
+
+  .check-in,
+  .check-out {
+    font-size: 0;
+    padding: 6px;
+    white-space: nowrap;
+  }
+
+  .check-in::before,
+  .check-out::before {
+    font-size: 0.85rem;
+    font-weight: bold;
+    display: inline-block;
+  }
+
+  td.col-checkin,
+  td.col-checkout,
+  td.col-reset {
+    text-align: center !important;
+    vertical-align: middle !important;
+  }
+
+  th.col-ride_group {
+
+      font-size: 0px;
+
+  }
+
+  th.col-ride_group::before {
+
+      content: "Group";
+      font-size: 0.95rem;
+
+  }
+
+  /* 5) Hide unwanted columns via your col‑classes */
+  
+
+  .overlay {
+
+    padding: 20px;
+
+  }
+
+  #approval-table .col-first_name,
+  #approval-table .col-elapsed {
+    display: table-cell !important;
+  }
+
+}
+
+/* Responsive: hide all optional columns by default on small screens */
+@media (max-width: 768px) {
+  #approval-table .col-school,
+  #approval-table .col-team,
+  #approval-table .col-ride_group {
+    display: none;
+  }
+
+  #approval-table.show-col-school .col-school,
+  #approval-table.show-col-team .col-team,
+  #approval-table.show-col-ride_group .col-ride_group {
+    display: table-cell !important;
+  }
+
+}
+
+@media (max-width: 768px) {
+  /* --- Compact table rows --- */
+#checkin-table tr,
+#checkin-table td {
+  height: auto !important;
+  line-height: 1 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-collapse: collapse;
+}
+
+#checkin-table td {
+  padding: 4px 6px !important;
+  vertical-align: middle !important;
+}
+
+/* Optional: smaller font for tighter look */
+#checkin-table td,
+#checkin-table button.user-info-btn {
+  font-size: 0.95rem;
+}
+
+#controls {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  background: #2C2A2A !important;
+  border-bottom: 2px solid white !important;
+  padding-top: 10px;
+}
+
+.table-container {
+  overflow: visible !important;
+}
+
+
+
+
+}

@@ -1,0 +1,34 @@
+# Ignore all vendor folders
+**/vendor/
+
+# Ignore environment/config files
+*.env
+*.env.local
+*.env.*.local
+*.json
+
+# Ignore logs and temporary files
+*.log
+*.txt
+logs/
+tmp/
+cache/
+
+# Ignore OS and editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.idea/
+*.vscode/
+
+# Ignore archives and backups
+*.zip
+*.tar.gz
+*.bak
+*.old
+
+# Ignore spreadsheets and sensitive data
+*.xlsx
+*.xls
+*.csv

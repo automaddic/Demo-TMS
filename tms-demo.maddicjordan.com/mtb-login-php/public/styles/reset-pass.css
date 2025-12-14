@@ -1,0 +1,213 @@
+/* CSS for the password reset screen — matches login.css */
+
+body {
+    background-color: #3D3939;
+    margin: 0;
+    padding: 0;
+}
+
+.Reset-Pass {
+
+    position: relative;
+
+    background: none;
+
+    width: 450px;
+    height: 575px;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 45px;
+    margin-bottom: auto;
+
+
+
+}
+
+.Reset-Pass div {
+
+    background-color: #2C2A2A;
+
+    width: auto;
+    height: auto;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    padding-bottom: 15px;
+
+}
+
+.Reset-Pass div div {
+    width: 100%;
+}
+
+.img-cont img {
+
+    display: block;
+
+    width: 70px;
+    height: 70px;
+
+    z-index: 1;
+
+    margin-top: 15px;
+    margin-bottom: 25px;
+
+}
+
+.title-cont p {
+    text-align: center;
+    margin: 0;
+    margin-bottom: 10px;
+    color: white;
+    font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+    font-size: 32px;
+    font-weight: 100;
+}
+
+#split-1 {
+    width: 90%;
+    margin-bottom: 20px;
+}
+
+form {
+    width: 100%;
+}
+
+#email-cont,
+#new-pass {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#email-cont div,
+#new-pass div {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 5px;
+}
+
+#email-cont label,
+#new-pass label {
+    color: white;
+    font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+#email-cont input,
+#new-pass input[type="password"] {
+    width: 100%;
+    height: 40px;
+    border-radius: 6px;
+    border: 3px solid white;
+    background-color: #BEBBBB;
+    padding: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+#email-submit,
+#reset-submit {
+    background: #403D3D;
+    color: white;
+    border: solid;
+    border-width: 2px;
+    padding: 10px;
+    width: 70%;
+    margin-top: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+#email-submit:hover,
+#reset-submit:hover {
+    background-color: #99AD9F;
+    color: white;
+}
+
+.error {
+    color: #ff4d4d;
+    font-size: 14px;
+    text-align: center;
+    font-family: "Gill Sans", "Gill Sans MT", sans-serif;
+    margin-bottom: 10px;
+}
+
+.success {
+    color: #66cc66;
+    font-size: 14px;
+    text-align: center;
+    font-family: "Gill Sans", "Gill Sans MT", sans-serif;
+    margin-bottom: 10px;
+}
+
+a {
+    font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+    color: #499ED8;
+    text-decoration: none;
+    font-weight: lighter;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Enhancements */
+@media (max-width: 600px) {
+
+    body {
+
+        padding-bottom: 100px;
+
+    }
+
+    .Reset-Pass {
+        width: 90%;
+        margin-top: 30px;
+        height: auto;
+    }
+
+    .Reset-Pass div {
+        padding: 20px 10px;
+    }
+
+    .title-cont p {
+        font-size: 24px;
+    }
+
+    #email-cont div,
+    #new-pass div {
+        width: 95%;
+    }
+
+    #email-cont input,
+    #new-pass input[type="password"] {
+        font-size: 16px;
+    }
+
+    #email-submit,
+    #reset-submit {
+        width: 90%;
+        font-size: 15px;
+        padding: 12px;
+    }
+
+    .img-cont img {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 20px;
+    }
+}

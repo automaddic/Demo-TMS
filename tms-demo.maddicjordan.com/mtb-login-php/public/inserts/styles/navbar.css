@@ -1,0 +1,294 @@
+/* Sidebar Container */
+.sidebar {
+  font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+  position: fixed;
+  top: 1rem;
+  bottom: 1rem;
+  width: 60px;
+  background-color: #3A3737;
+  border-radius: 20px;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  color: white;
+  z-index: 1000;
+  transition: width 0.4s ease;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.sidebar:hover {
+  width: 200px;
+}
+
+/* Nav Sections */
+.nav-top,
+.nav-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.disabled-nav-admin {
+  pointer-events: auto;
+  /* Allow hover events */
+  cursor: not-allowed;
+  /* Show cross/pointer icon */
+  text-decoration: none !important;
+  background-color: #3A3737 !important;
+
+}
+/* Nav Item */
+.nav-item {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #3A3737;
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.0rem;
+  text-decoration: none;
+  color: white;
+  transition: background 0.2s ease;
+}
+
+.nav-item:hover {
+  background-color: #4C4747;
+}
+
+.nav-item.active {
+  background-color: #4C4747;
+  border-left: 4px solid #bcddbb;
+  padding-left: calc(1rem - 4px);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  object-fit: contain;
+}
+
+.admin-submenu .icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  object-fit: contain;
+}
+
+.nav-text {
+  opacity: 0;
+  margin-left: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: opacity 0.2s ease-out;
+  /* delay to sync with sidebar */
+}
+
+.sidebar:hover .nav-text {
+  opacity: 1;
+}
+
+/* Sub Items */
+.sub-item {
+  margin-left: 20px;
+}
+
+.sub-item.active {
+  background-color: #4C4747;
+  border-left: 4px solid #b5ded7;
+  padding-left: calc(1rem - 4px);
+}
+
+/* Submenu */
+.admin-submenu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: opacity 0.4s ease, max-height 0.4s ease;
+}
+
+/* Trigger submenu fade in on hover */
+#admin:hover+.admin-submenu,
+.admin-submenu:hover {
+  opacity: 1;
+  max-height: 500px;
+  pointer-events: auto;
+}
+
+/* Ensure nav text shows when sidebar expands */
+.sidebar:hover .sub-item .nav-text {
+  opacity: 1;
+  margin-left: 10px;
+}
+
+a {
+  color: #499ED8;
+  text-decoration: none;
+  font-weight: lighter;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.sidebar-toggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  background-color: #444;
+  border-radius: 10px;
+  z-index: 2000;
+  /* higher than sidebar */
+  display: none;
+  /* show only on mobile */
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+}
+
+
+.sidebar-wrapper {
+  /* match the expanded sidebar width */
+  height: calc(100vh - 2rem);
+  /* full viewport height minus top & bottom margins */
+  pointer-events: auto;
+  /* allow clicks on desktop */
+  background: transparent;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1000;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background: transparent;
+  /* transparent wrapper */
+  transition: transform 0.3s ease;
+  transform: translateX(0);
+}
+
+/* Hide sidebar by default on mobile */
+@media (max-width: 768px) {
+  .sidebar-wrapper {
+    position: fixed;
+    top: 10px;
+    left: 0;
+    height: 600px;
+    transform: translateX(-220px);
+    /* hide completely */
+    transition: transform 0.3s ease;
+    z-index: 2000;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    /* disable interaction by default */
+  }
+
+  .sidebar-wrapper.expanded {
+    transform: translateX(0);
+  }
+
+  .sidebar {
+    width: 200px;
+    transition: width 0.3s ease;
+    border-radius: 0 10px 10px 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  .sidebar:hover {
+    width: 200px !important;
+  }
+
+  .sidebar-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1700;
+    display: flex;
+    background-color: #444;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+    width: 35px;
+    height: 35px;
+    font-size: 22px;
+    color: white;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: right 0.3s ease;
+  }
+
+  /* Default (hamburger) */
+.sidebar-toggle .icon::before {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  height: 100%;
+  font-size: 28px;
+  line-height: 1;
+  text-align: center;
+  content: "☰";
+  display: flex;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* When active, transition into × */
+.sidebar-toggle.active .icon::before {
+  content: "×";
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+  .sidebar-overlay {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(3px);
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1500;
+  }
+
+  .sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Show all labels, not only on hover */
+  .nav-text {
+    opacity: 1 !important;
+  }
+
+  /* Keep the admin submenu always visible */
+  .admin-submenu {
+    opacity: 1 !important;
+    max-height: none !important;
+    pointer-events: auto !important;
+  }
+
+  /* Cancel any hover-based expansions */
+  .sidebar:hover,
+  #admin:hover+.admin-submenu,
+  .sidebar:hover .nav-text,
+  .sidebar:hover .sub-item .nav-text {
+    /* no-op on mobile */
+    width: auto !important;
+  }
+}

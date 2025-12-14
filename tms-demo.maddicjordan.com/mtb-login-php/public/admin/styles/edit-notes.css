@@ -1,0 +1,361 @@
+/* === Base & Page Wrapper === */
+body {
+  background-color: #2C2A2A;
+  color: #fff;
+  font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.page-wrapper {
+  margin-left: 70px;
+  /* adjust if sidebar width differs */
+  padding: 2rem;
+}
+
+/* Headings */
+h1 {
+  font-weight: 200;
+  margin-bottom: 1rem;
+}
+
+/* Practices grid */
+.practices-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.practice-panel {
+  background: #3D3939;
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.practice-panel.today {
+  border-color: #28a745;
+  box-shadow: 0 0 8px rgba(40, 167, 69, 0.5);
+}
+
+.practice-panel h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.practice-panel .datetime,
+.practice-panel .location,
+.practice-panel .day-type {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.practice-panel a {
+  color: #499ED8;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.practice-panel a:hover {
+  text-decoration: underline;
+}
+
+.practice-panel button.btn-edit-notes {
+  margin-top: auto;
+  align-self: flex-start;
+  background-color: #499ED8;
+  border: none;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.practice-panel button.btn-edit-notes:hover {
+  background-color: #367ab8;
+}
+
+/* Modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.modal-overlay.active {
+  display: flex !important;
+}
+
+/* Modal content */
+.modal-content {
+  background: #3D3939;
+  border-radius: 8px;
+  padding: 20px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Form inside modal */
+#form-notes label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+#form-notes textarea {
+  width: 100%;
+  background-color: #2C2A2A;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.modal-content button {
+  background-color: #499ED8;
+  border: none;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.modal-content button:hover {
+  background-color: #367ab8;
+}
+
+.notes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.notes-title {
+  max-width: 60%;
+}
+
+.ride-group-box {
+  background-color: #3D3939;
+  border: 1px solid #555;
+  border-radius: 10px;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  min-width: 220px;
+  max-width: 300px;
+  color: #fff;
+}
+
+.ride-group-box label {
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+/* Style the ride-group dropdown */
+.group-select {
+  padding: 6px 10px;
+  font-size: 1rem;
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #555;
+  border-radius: 4px;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+.group-select:focus {
+  outline: none;
+  border-color: #499ED8;
+}
+
+#ride_group_id {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #555;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+  .notes-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .notes-title {
+    max-width: 100%;
+  }
+
+  .ride-group-box {
+    width: 100%;
+    align-items: stretch;
+  }
+}
+
+/* greyed “View Notes” buttons */
+.btn-edit-notes[data-locked="true"] {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* hide save/cancel by default; we’ll un‑hide only for editable sessions */
+#btn-save-notes,
+#btn-cancel-notes {
+  display: none;
+}
+
+body.modal-open {
+  overflow: hidden;
+  height: 100vh;
+  position: fixed;
+  width: 100%;
+}
+
+
+@media (max-width: 768px) {
+
+  body {
+
+    padding-bottom: 100px;
+  }
+
+  .page-wrapper {
+    margin-left: 0;
+    padding: 1rem;
+  }
+
+  h1 {
+
+    margin-left: 40px;
+    margin-top: 0px;
+
+  }
+
+  .practices-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .practice-panel {
+    padding: 1rem;
+  }
+
+  .practice-panel h3 {
+    font-size: 1rem;
+  }
+
+  .practice-panel .datetime,
+  .practice-panel .location,
+  .practice-panel .day-type {
+    font-size: 0.85rem;
+  }
+
+  .practice-panel a {
+    font-size: 0.85rem;
+  }
+
+  .practice-panel button.btn-edit-notes {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    width: 100%;
+  }
+
+  .modal-content {
+    padding: 16px;
+    width: 95vw;
+    max-height: 90vh;
+  }
+
+  .modal-close {
+    font-size: 20px;
+    top: 8px;
+    right: 10px;
+    width: 35px !important;
+  }
+
+  #form-notes label {
+    font-size: 0.95rem;
+  }
+
+  #form-notes textarea {
+    font-size: 1rem;
+    padding: 10px;
+    min-height: 120px;
+  }
+
+  .modal-content button {
+    width: 100%;
+    margin: 12px 0 0;
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .notes-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .notes-title {
+    width: 100%;
+  }
+
+  .ride-group-box {
+
+    padding: 12px;
+    margin: 0 5px 0 5px;
+  }
+
+  .ride-group-box label {
+    font-size: 0.95rem;
+  }
+
+  .group-select,
+  #ride_group_id {
+    font-size: 1rem;
+    padding: 10px;
+    margin: 0 5px 0 5px;
+  }
+
+  .modal-content::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .modal-content::-webkit-scrollbar-thumb {
+    background-color: #499ED8;
+    border-radius: 4px;
+  }
+}

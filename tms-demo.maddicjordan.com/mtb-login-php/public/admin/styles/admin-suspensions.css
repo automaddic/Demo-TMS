@@ -1,0 +1,222 @@
+/* === Base Body and Font === */
+body {
+  background-color: #2C2A2A;
+  font-family: "Gill Sans", sans-serif;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+
+/* === Page Wrapper === */
+.page-wrapper {
+  margin-left: 70px;
+  padding: 2rem;
+  flex: 1;
+}
+
+/* === Header Styles === */
+.header-wrapper {
+  margin-bottom: 1rem;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+h1 {
+  font-weight: 200;
+  margin-bottom: 20px;
+  color: white;
+}
+
+/* === Container === */
+.container {
+  max-width: 900px;
+  margin: 20px auto;
+  background-color: #3D3939;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+/* === Suspensions Table === */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  user-select: none;
+  font-size: 0.95rem;
+  margin-top: 1rem;
+}
+
+th,
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #555;
+  text-align: left;
+}
+
+th {
+  background-color: #4B4848;
+  cursor: default;
+}
+
+tr:hover {
+  background-color: #504F4F;
+}
+
+/* === Buttons === */
+button.action-btn {
+  background-color: #499ED8;
+  border: none;
+  padding: 6px 12px;
+  color: white;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 6px;
+  transition: background-color 0.3s ease;
+}
+
+button.action-btn:hover {
+  background-color: #367ab8;
+}
+
+button.delete-btn {
+  background-color: #d9534f;
+}
+
+button.delete-btn:hover {
+  background-color: #c9302c;
+}
+
+/* Inline form for action buttons */
+form.inline-form {
+  display: inline;
+}
+
+/* Style the action cell to space buttons inline */
+.actions-cell {
+  vertical-align: middle;
+  /* ensures alignment with row */
+  padding: 12px 16px;
+  /* same as other cells */
+}
+
+.action-wrapper {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+
+tr td {
+  vertical-align: middle;
+}
+
+
+
+/* Prevent horizontal scrolling and wrap all cell content */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+  word-wrap: break-word;
+}
+
+th,
+td {
+  white-space: normal !important;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  padding: 12px 10px;
+}
+
+/* Make table container respect screen width */
+.table-container {
+  width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+
+/* Ensure table never overflows screen on small devices */
+@media (max-width: 768px) {
+
+  html,
+  body {
+    overflow-x: hidden;
+    padding-bottom: 100px;
+  }
+
+  /* Fixes main content area */
+  .page-wrapper {
+    margin-left: 0 !important;
+    padding: 1rem !important;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .container {
+    width: 100%;
+    padding: 20px 16px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+
+  .table-container {
+    overflow-x: hidden !important;
+  }
+
+  table {
+    table-layout: auto !important;
+    width: 100% !important;
+  }
+
+  th,
+  td {
+    white-space: normal !important;
+  }
+
+  /* Hide ID/email/preferred completely if desired */
+  .col-id,
+  .col-preferred,
+  .col-email {
+    display: none !important;
+  }
+
+
+  /* Make action buttons stack if needed */
+  .action-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .action-btn {
+    width: 100%;
+    font-size: 0;
+  }
+
+  .action-btn::before {
+
+    content: "✔";
+    font-size: 15px;
+  }
+
+  .delete-btn::before {
+
+    content: "X";
+    font-size: 15px;
+
+  }
+
+}

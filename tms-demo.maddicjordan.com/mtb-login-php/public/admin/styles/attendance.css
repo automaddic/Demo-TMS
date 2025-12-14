@@ -1,0 +1,298 @@
+/* === Base & Page Wrapper === */
+body {
+  background-color: #2C2A2A;
+  color: #fff;
+  font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", DejaVu Sans Condensed, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.page-wrapper {
+  margin-left: 70px;
+  padding: 2rem;
+}
+
+/* Headings */
+h1 {
+  font-weight: 200;
+  margin-bottom: 1rem;
+}
+
+/* Practices list */
+.practices-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.practice-item {
+  background: #3D3939;
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 1rem;
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.practice-item strong {
+  font-size: 1rem;
+}
+
+.practice-item .btn-edit-attendance {
+  margin-top: 10px;
+  background-color: #499ED8;
+  border: none;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.practice-item .btn-edit-attendance:hover {
+  background-color: #367ab8;
+}
+
+/* Modal overlay */
+.attendance-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.modal-overlay.active {
+  display: flex !important;
+}
+
+/* Modal content */
+/* Modal content */
+.attendance-modal-content {
+  background: #3D3939;
+  border-radius: 8px;
+  padding: 20px;
+  /* make it wider: */
+  width: 95%;
+  /* was 90% */
+  max-width: 1000px;
+  /* was 800px */
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Sort buttons */
+.att-sort-btn {
+  background-color: #6C6666;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.att-sort-btn.active {
+  background-color: #499ED8;
+}
+
+.att-sort-btn:hover {
+  background-color: #91aaff;
+  color: #2C2A2A;
+}
+
+/* Table container */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
+#attendance-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#attendance-table th,
+#attendance-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #555;
+  text-align: left;
+}
+
+#attendance-table thead {
+  background-color: #4B4848;
+}
+
+#attendance-table tr:hover {
+  background-color: #504F4F;
+}
+
+/* Row color coding will be set inline via JS, e.g. style.backgroundColor = rgba(...) */
+
+/* Save/Close buttons */
+#btn-save-attendance {
+  background-color: #28a745;
+  border: none;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+#btn-save-attendance:hover {
+  background-color: #218838;
+}
+
+#btn-cancel-attendance {
+  background-color: #dc3545;
+  border: none;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#btn-cancel-attendance:hover {
+  background-color: #c82333;
+}
+
+body.modal-open {
+  overflow: hidden;
+  height: 100vh;
+  position: fixed;
+  width: 100%;
+}
+
+
+/* === Mobile Friendly Overrides === */
+@media (max-width: 768px) {
+
+  body{
+
+    padding-bottom: 100px;
+  }
+
+  /* Page wrapper full width, no left margin */
+  .page-wrapper {
+    margin-left: 0 !important;
+    padding: 1rem !important;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    /* prevent horizontal scroll */
+  }
+
+  h1 {
+
+    margin-left: 45px;
+    margin-top: 0px;
+
+  }
+
+  /* Modal overlay already fixed/full screen */
+
+  /* Modal content: width 95% max width reduced, max height with vertical scroll only */
+  .attendance-modal-content {
+    width: 95% !important;
+    max-width: 600px !important;
+    max-height: 90vh !important;
+    overflow-x: hidden !important;
+    /* no horizontal scroll */
+    overflow-y: auto !important;
+    /* allow vertical scroll */
+    padding: 15px !important;
+    padding-bottom: 50px !important;
+  }
+
+  /* Table container: no horizontal scroll, allow wrapping */
+  .table-container {
+    overflow-x: hidden !important;
+    /* prevent horizontal scroll */
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  /* Table: allow cell content to wrap, no fixed layout */
+  #attendance-table {
+    width: 100% !important;
+    table-layout: auto !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  #attendance-table th,
+  #attendance-table td {
+    white-space: wrap !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word;
+    padding: 10px 8px !important;
+  }
+
+  /* Stack buttons vertically and full width */
+  #btn-save-attendance,
+  #btn-cancel-attendance {
+    width: 100% !important;
+    margin-bottom: 10px !important;
+    font-size: 1rem !important;
+  }
+
+  /* Practice items list stack vertically */
+  .practices-list {
+    flex-direction: column;
+  }
+
+  .practice-item {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .col-school,
+  .col-team,
+  .col-ride_group {
+    display: none !important;
+  }
+
+  /* Show if .show class is added dynamically */
+  .col-school.show,
+  .col-team.show,
+  .col-ride_group.show {
+    display: table-cell !important;
+  }
+
+  /* Also hide sort buttons unless active */
+  .att-sort-btn.col-school,
+  .att-sort-btn.col-team,
+  .att-sort-btn.col-ride_group {
+    display: none;
+  }
+
+  .att-sort-btn.col-school.show,
+  .att-sort-btn.col-team.show,
+  .att-sort-btn.col-ride_group.show {
+    display: inline-block;
+  }
+}

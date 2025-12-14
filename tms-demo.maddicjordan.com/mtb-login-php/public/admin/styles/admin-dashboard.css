@@ -1,0 +1,303 @@
+/* public/admin/styles/admin-dashboard.css */
+/* === Base Styles === */
+body {
+  background-color: #2C2A2A;
+  font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.page-wrapper {
+  margin-left: 70px;
+  padding: 2rem;
+  flex: 1;
+}
+
+/* === Typography === */
+h1,
+h2 {
+  color: #ffffff;
+  font-weight: 200;
+  margin-bottom: 20px;
+}
+
+/* === Containers / Utility === */
+.container {
+  position: relative;
+  margin: 20px auto;
+  background-color: #3D3939;
+  padding: 5px 30px 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* === Details/Summary for collapsible sections === */
+details {
+  margin-bottom: 1.5rem;
+  border: 1px solid #555;
+  border-radius: 6px;
+  background: #3D3939;
+
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+  /* let everything be seen naturally */
+}
+
+summary {
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  user-select: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary:after {
+  content: ' ▶';
+  float: right;
+  transition: transform 0.2s ease;
+}
+
+details[open] summary:after {
+  content: ' ▼';
+}
+
+details>*:not(summary) {
+  padding: 1rem;
+  border-top: 1px solid #555;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+/* === Tables === */
+.table-container {
+  position: relative;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  table-layout: fixed;
+}
+
+th,
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #555;
+  text-align: left;
+}
+
+thead {
+  background-color: #4B4848;
+}
+
+tr:hover {
+  background-color: #504F4F;
+}
+
+/* === Buttons & Inputs === */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  transition: 0.2s ease;
+  background-color: #499ED8;
+  border: none;
+  padding: 6px 12px;
+  color: white;
+  font-weight: 600;
+  border-radius: 6px;
+  margin: 4px 0;
+}
+
+button:hover:not(:disabled) {
+  background-color: #367ab8;
+}
+
+button:disabled {
+  background-color: #666;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 8px 12px;
+  margin: 4px 0;
+  background-color: #2C2A2A;
+  border: 1px solid #555;
+  border-radius: 6px;
+  color: #fff;
+}
+
+input[type="text"]::placeholder {
+  color: #999;
+}
+
+/* === Ride Group Badge (for preview) === */
+.ride-group-badge {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: middle;
+  border: 1px solid #666;
+}
+
+/* Optional: adjust page-wrapper left margin if sidebar width changes */
+/* Example additions */
+.role-editor-container input[name="search_user"] {
+  max-width: 300px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.role-editor-container {
+  padding: 1rem;
+  background-color: #3D3939;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+/* Search input styling */
+#search-user-input {
+  max-width: 300px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px;
+  margin-bottom: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #555;
+  background-color: #2C2A2A;
+  color: #fff;
+}
+
+/* Table styling */
+.role-editor-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+
+.role-editor-container th,
+.role-editor-container td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #555;
+}
+
+/* Sort buttons */
+.user-sort-btn {
+  background-color: #6C6666;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.user-sort-btn.active {
+  background-color: #499ED8;
+}
+
+.user-sort-btn:hover {
+  background-color: #91aaff;
+  color: #2C2A2A;
+}
+
+/* Save button */
+.save-btn-top {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.save-btn-top:hover {
+  background-color: #218838;
+}
+
+.alert {
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.alert.success {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.alert.error {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+}
+
+.mobile-modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.2);
+  /* darkens */
+  backdrop-filter: blur(8px);
+  /* blurs */
+  -webkit-backdrop-filter: blur(8px);
+  /* Safari support */
+  color: white;
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.mobile-modal-content {
+  margin: 1rem;
+  background: #3D3939;
+  padding: 2rem;
+  border-radius: 12px;
+
+  max-width: 90%;
+  width: 100%;
+}
+
+/* Show modal and hide page content on small screens */
+@media (max-width: 768px) {
+  .mobile-modal-overlay {
+    display: flex;
+  }
+}

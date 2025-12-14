@@ -1,0 +1,167 @@
+/* General Page Styling */
+body {
+    font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif" ;
+    background-color: #3D3939;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+	
+}
+
+/* Registration Section */
+
+
+
+.register {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+	margin-bottom: auto;
+    background-color: #2C2A2A;
+    padding: 20px;
+    width: 550px;
+	height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Logo */
+.img-cont img {
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+/* Title */
+.title-cont p {
+    font-size: 32px;
+	font-weight: 100;
+    color: white;
+}
+
+
+
+/* Form */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form div {
+    width: 100%;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    margin: 8px 0 4px;
+    color: white;
+}
+
+input {
+    width: 100%;
+	height: 40px;
+	border-radius: 6px;
+	border: 3px solid white;
+	background-color: #BEBBBB;
+	padding: 5px;
+	margin-bottom: 5px;
+	box-sizing: border-box;
+}
+
+/* Button Styling */
+button {
+    background: #403D3D;
+    color: white;
+    border: solid;
+	border-width: 2px;
+    padding: 10px;
+    width: 70%;
+    margin-top: 25px;
+	margin-bottom: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+button:hover {
+   
+	background-color: #99AD9F;
+	color: white;
+}
+
+/* Login Redirect */
+p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+a {
+    color: #499ED8;
+    text-decoration: none;
+    font-weight: lighter;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.error {
+    color: #ff4d4d;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.success {
+    color: #66cc66;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+/* Mobile Responsive Enhancements */
+@media (max-width: 600px) {
+    body {
+        align-items: flex-start;
+        padding-top: 30px;
+        height: auto;
+        padding-bottom: 100px;
+    }
+
+    .register {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .img-cont img {
+        width: 70px;
+        margin-bottom: 15px;
+    }
+
+    .title-cont p {
+        font-size: 24px;
+    }
+
+    label {
+        font-size: 13px;
+    }
+
+    input {
+        font-size: 15px;
+    }
+
+    button {
+        width: 90%;
+        font-size: 15px;
+        padding: 12px;
+    }
+
+    p {
+        font-size: 13px;
+    }
+}
