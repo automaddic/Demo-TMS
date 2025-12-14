@@ -103,3 +103,7 @@
   - Sensitive integrations removed
   - All data fake and safe to use
   - Report bugs/issues via GitHub Issues
+  - Please go to db.tms-demo.maddicjordan.com for the database architecture
+    - login credentials
+    - username: demo_viewer_tms
+    - password: demonstration
