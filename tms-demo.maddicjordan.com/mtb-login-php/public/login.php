@@ -36,7 +36,7 @@ unset($_SESSION['from_register']);
 						<?php endif; ?>
 					<?php endif; ?>
 					<div>
-						<p style="color: white;">Login to the site by clicking the button below (No username or password required). Or, see some fun security measures by creating an account and input the info below!</p>
+						<p style="color: white;">Login to the site by clicking the button below (No username or password required). Or, see some fun security measures by creating an account and input the info below!</br></br>Please visit <a href="https://github.com/automaddic/Demo-TMS/blob/main/README.md">GitHub</a> for important information about the safe operation and viewing of this demonstration.</p>
 						<label>Email / Username</label>
 						<input id="email-in" name="identifier">
 						<label>Password</label>
