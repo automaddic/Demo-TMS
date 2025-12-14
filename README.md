@@ -1,4 +1,5 @@
 - PROJECT DEMO SITE
+  - A live demonstration can be viewed at: tms-demo.maddicjordan.com
 - IMPORTANT NOTE
   - This repository is a demo / stripped-down version of a larger production system originally built for a non-profit organization.
   - Exists for demonstration, review, and testing purposes only.
