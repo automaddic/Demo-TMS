@@ -7,7 +7,7 @@ $profilePicture = $user['profile_picture_url'] ?? null;
 
 $defaultAvatar = '{$baseUrl}/public/router-api.php?path=user-data/profile-pictures/defaults/default_pfp.png';
 
-include $_SERVER['DOCUMENT_ROOT'] . '/mtb-login-php/public/inserts/accounts-modal.php';
+//include $_SERVER['DOCUMENT_ROOT'] . '/mtb-login-php/public/inserts/accounts-modal.php';
 
 // Determine which avatar to use
 $avatarSrc = $profilePicture ?: $defaultAvatar;
@@ -101,12 +101,13 @@ $avatarSrc = $profilePicture ?: $defaultAvatar;
 
         <div class="nav-bottom">
             <!-- Accounts Button with user profile pic -->
+            <!--
             <a href="?modal=accounts" class="nav-item" id="account-button">
                 <img class="icon" src="<?= htmlspecialchars($avatarSrc) ?>" alt="X"
                     style="border-radius:50%;">
                 <span class="nav-text">Account</span>
             </a>
-
+                    -->
 
             <a href="<?= $baseUrl ?>/public/router-api.php?path=logout.php" class="nav-item" id="logout">
                 <img class="icon" src="<?= $baseUrl ?>/public/images/icons/logout.png" alt="Logout Icon">
