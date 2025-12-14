@@ -117,7 +117,9 @@ $practices = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </label>
 
                                 <input type="tel" name="phone-number" id="phone_number"
-                                    value="<?= htmlspecialchars($prefill['phone_number'] ?? '') ?>">
+                                   value="<?= htmlspecialchars($prefill['phone_number'] ?? '') ?>"
+                                      <?= !empty($prefill['wants_texts']) ? 'required' : '' ?>>
+
                                 <label>
                                     <input type="checkbox" name="wants_emails" <?= !empty($prefill['wants_emails']) ? 'checked' : '' ?>>
                                     Receive Email Updates
@@ -125,11 +127,18 @@ $practices = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             </div>
 
                             <script>
-                                document.getElementById('wants_texts').addEventListener('change', function () {
-                                    const phone = document.getElementById('phone_number');
-                                    phone.required = this.checked;
-                                });
-                            </script>
+                              const wantsTexts = document.getElementById('wants_texts');
+                              const phone = document.getElementById('phone_number');
+                          
+                              // Set required on page load based on checkbox state
+                              phone.required = wantsTexts.checked;
+                          
+                              // Update required whenever checkbox changes
+                              wantsTexts.addEventListener('change', function () {
+                                  phone.required = this.checked;
+                              });
+                          </script>
+
 
                             <input type="hidden" name="force_save" id="force_save" value="0">
 
