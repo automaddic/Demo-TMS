@@ -175,7 +175,7 @@ $upcomingPracticeDays = $stmtPracticeDays->fetchAll(PDO::FETCH_ASSOC);
     ?>
     
     <div class="page-wrapper">
-       <button id="manual-checkin-btn" class="manual-checkin-btn">Manual Check-In</button>
+       <!--<button id="manual-checkin-btn" class="manual-checkin-btn">Manual Check-In</button>-->
 
         <div id="manual-checkin-modal" class="modal-overlay" style="display:none; z-index:10000;">
             <div class="modal-content">

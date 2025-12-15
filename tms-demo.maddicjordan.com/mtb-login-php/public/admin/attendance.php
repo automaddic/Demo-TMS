@@ -5,7 +5,8 @@ require_once '/home/automaddic/mtb/server/auth/check-role-access.php';
 enforceAccessOrDie(basename(__FILE__), $pdo);
 
 $now = new DateTime('now', new DateTimeZone('America/New_York'));
-$todayStart = (clone $now)->setTime(0, 0, 0);        // today at 00:00:00
+$todayStart = (clone $now)->setTime(0, 0, 0);   
+$yesterdayStart = (clone $now)->setTime(0, 0, 0)->modify('-1 day');
 $twoWeeksFwd = (clone $todayStart)->modify('+14 days'); // 14 days from today
 
 // 1) Active / Upcoming: start today or later, but within next 14 days
@@ -27,11 +28,11 @@ $stmtArch = $pdo->prepare("
   SELECT pd.*, dt.name AS day_type_name
     FROM practice_days pd
     LEFT JOIN day_types dt ON pd.day_type_id = dt.id
-    WHERE pd.end_datetime < ?
+    WHERE pd.start_datetime < ?
     ORDER BY pd.start_datetime DESC
 ");
 $stmtArch->execute([
-  $todayStart->format('Y-m-d H:i:s'),
+  $yesterdayStart->format('Y-m-d H:i:s'),
 ]);
 $archived = $stmtArch->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -55,9 +56,9 @@ $archived = $stmtArch->fetchAll(PDO::FETCH_ASSOC);
     <div class="practices-list" id="attendance-days">
       <?php foreach ($active as $pd):
         $start = new DateTime($pd['start_datetime'], new DateTimeZone('America/New_York'));
-        $end = new DateTime($pd['end_datetime'], new DateTimeZone('America/New_York'));
+        $end = $pd['end_datetime'] ? new DateTime($pd['end_datetime'], new DateTimeZone('America/New_York')) : null;
         $date = $start->format('M j, Y');
-        $time = $start->format('g:ia') . ' – ' . $end->format('g:ia');
+        $time = $start->format('g:ia') . ($end ? ' – ' . $end->format('g:ia') : '');
         ?>
         <div class="practice-item" data-id="<?= $pd['id'] ?>">
           <strong><?= htmlspecialchars($pd['name']) ?></strong><br>
@@ -77,9 +78,9 @@ $archived = $stmtArch->fetchAll(PDO::FETCH_ASSOC);
       <div class="practices-list" id="archived-days" style="margin-top:1rem;">
         <?php foreach ($archived as $pd):
           $start = new DateTime($pd['start_datetime'], new DateTimeZone('America/New_York'));
-          $end = new DateTime($pd['end_datetime'], new DateTimeZone('America/New_York'));
+          $end = $pd['end_datetime'] ? new DateTime($pd['end_datetime'], new DateTimeZone('America/New_York')) : null;
           $date = $start->format('M j, Y');
-          $time = $start->format('g:ia') . ' – ' . $end->format('g:ia');
+          $time = $start->format('g:ia') . ($end ? ' – ' . $end->format('g:ia') : '');
           ?>
           <div class="practice-item" data-id="<?= $pd['id'] ?>">
             <strong><?= htmlspecialchars($pd['name']) ?></strong><br>
@@ -244,12 +245,19 @@ $archived = $stmtArch->fetchAll(PDO::FETCH_ASSOC);
           const res = await fetch(`../router-api.php?path=api/compile/get-practice-day-details.php&id=${pdId}`);
           const info = await res.json();
           titleEl.textContent = `Attendance - ${info.name}`;
-          const s = new Date(info.start_datetime), e = new Date(info.end_datetime);
-          const optsDate = { year: 'numeric', month: 'short', day: 'numeric' };
-          const optsTime = { hour: 'numeric', minute: '2-digit' };
-          datetimeEl.textContent = `${s.toLocaleDateString(undefined, optsDate)} • `
-            + `${s.toLocaleTimeString(undefined, optsTime)} - `
-            + `${e.toLocaleTimeString(undefined, optsTime)}`;
+          const s = new Date(info.start_datetime);
+        const optsDate = { year: 'numeric', month: 'short', day: 'numeric' };
+        const optsTime = { hour: 'numeric', minute: '2-digit' };
+
+        let datetimeStr = `${s.toLocaleDateString(undefined, optsDate)} • ${s.toLocaleTimeString(undefined, optsTime)}`;
+
+        if (info.end_datetime) {
+        const e = new Date(info.end_datetime);
+        datetimeStr += ' - ' + e.toLocaleTimeString(undefined, optsTime);
+        }
+
+        datetimeEl.textContent = datetimeStr;
+
         } catch {
           titleEl.textContent = 'Attendance';
           datetimeEl.textContent = '';

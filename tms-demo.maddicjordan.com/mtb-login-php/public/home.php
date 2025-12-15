@@ -433,11 +433,12 @@ $practices = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         const res = await fetch('router-api.php?path=api/compile/get-practice-day-details.php&id=' + encodeURIComponent(pdId));
                         if (!res.ok) throw new Error('Network response was not OK');
                         const data = await res.json();
+
                         // Populate fields
                         enlargeName.textContent = data.name;
+
                         // Format datetime nicely:
                         const start = new Date(data.start_datetime);
-                        const end = new Date(data.end_datetime);
 
                         // Force English output regardless of user's browser language
                         const optionsDate = { year: 'numeric', month: 'short', day: 'numeric' };
@@ -445,10 +446,20 @@ $practices = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                         const dateStr = start.toLocaleDateString('en-US', optionsDate);
                         const startStr = start.toLocaleTimeString('en-US', optionsTime);
-                        const endStr = end.toLocaleTimeString('en-US', optionsTime);
 
-                        enlargeDatetime.textContent = `${dateStr} • ${startStr} - ${endStr}`;
+                        // Handle nullable end time
+                        let endStr = '';
+                        if (data.end_datetime) {
+                            const end = new Date(data.end_datetime);
+                            endStr = end.toLocaleTimeString('en-US', optionsTime);
+                        }
+
+                        enlargeDatetime.textContent = endStr
+                            ? `${dateStr} • ${startStr} - ${endStr}`
+                            : `${dateStr} • ${startStr}`;
+
                         enlargeLocation.textContent = data.location || '';
+
 
                         if (data.map_link) {
                             enlargeDirections.href = data.map_link;
